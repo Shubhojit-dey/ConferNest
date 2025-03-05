@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../index.css";
 import io from "socket.io-client";
 import { Badge, IconButton, TextField } from "@mui/material";
@@ -54,6 +55,8 @@ export default function VideoMeetComponent() {
   const videoRef = useRef([]);
 
   let [videos, setVideos] = useState([]);
+
+  const navigate = useNavigate();
 
   // TODO
   // if(isChrome() === false) {
@@ -459,7 +462,7 @@ export default function VideoMeetComponent() {
       let tracks = localVideoref.current.srcObject.getTracks();
       tracks.forEach((track) => track.stop());
     } catch (e) {}
-    window.location.href = "/home";
+    navigate("/home");
   };
 
   let openChat = () => {
