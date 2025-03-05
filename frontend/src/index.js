@@ -12,7 +12,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <HashRouter>
+  <BrowserRouter>
    <AuthProvider>
     <Routes>
       <Route path="/" element={<LandingPage />} />
@@ -24,5 +24,5 @@ root.render(
       <Route path="/:url" element={<VideoMeetComponent />} />
     </Routes>
     </AuthProvider>
-  </HashRouter>
+  </BrowserRouter>
 );
