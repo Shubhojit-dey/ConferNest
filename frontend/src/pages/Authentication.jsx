@@ -44,7 +44,7 @@ export default function Authentication() {
       });
       localStorage.setItem("token", res.data.token);
       alert("Login Successful!");
-      window.location.href = "/home";
+      navigate("/home");
     } catch (error) {
       alert(error.response.data.message);
     }
