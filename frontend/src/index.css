@@ -174,7 +174,7 @@ code {
 .conferenceView  video {
   margin-top: 5%;
   width: 40vw;
-  height: 50vh;
+  height: 30vh;
   min-width: 30vw;
   border-radius: 10px;
 }
