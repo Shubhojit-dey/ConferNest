@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
+import servers from "../environment";
 
 export default function Authentication() {
   const [username, setUsername] = useState("");
@@ -16,7 +17,7 @@ export default function Authentication() {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/api/v1/users/register", {
+      await axios.post(`${servers}/api/v1/users/register`, {
         username,
         name,
         password,
@@ -37,7 +38,7 @@ export default function Authentication() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8000/api/v1/users/login", {
+      const res = await axios.post(`${servers}/api/v1/users/login`, {
         username: loginUsername,
         password: loginPassword,
       });

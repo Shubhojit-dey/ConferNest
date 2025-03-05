@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Box, Card, CardContent, CardActions, Typography, Button, IconButton } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import axios from 'axios';
+import servers from '../environment';
 
 export default function History() {
   const { getHistoryOfUser } = useContext(AuthContext);
@@ -33,7 +34,7 @@ export default function History() {
   // Delete a specific meeting history
   const handleDeleteMeeting = async (meetingCode) => {
     try {
-      await axios.delete(`http://localhost:8000/api/v1/users/delete_meeting`, {
+      await axios.delete(`${servers}/api/v1/users/delete_meeting`, {
         data: { token: localStorage.getItem("token"), meeting_code: meetingCode }
       });
       setMeetings((prevMeetings) => prevMeetings.filter((m) => m.meetingCode !== meetingCode));
@@ -45,7 +46,7 @@ export default function History() {
   // Delete all meeting history for the user
   const handleDeleteAllHistory = async () => {
     try {
-      await axios.delete(`http://localhost:8000/api/v1/users/delete_all_activity`, {
+      await axios.delete(`${servers}/api/v1/users/delete_all_activity`, {
         data: { token: localStorage.getItem("token") }
       });
       setMeetings([]);
